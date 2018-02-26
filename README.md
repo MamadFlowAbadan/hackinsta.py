@@ -5,6 +5,8 @@
 ![stars](https://img.shields.io/github/stars/avramit/Instahack.svg?style=flat-square)
 ![forks](https://img.shields.io/github/forks/avramit/Instahack.svg?style=flat-square)
 
+![rsize](https://img.shields.io/github/repo-size/badges/shields.svg)
+
 ### Please dont open a new issue before you search if issue already exists
 ### Please open issue with clear name
 
