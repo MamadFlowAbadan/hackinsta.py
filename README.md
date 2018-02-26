@@ -1,7 +1,7 @@
 
 
 # Instahack (Instabrute)
-[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)]
+![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ARVABYAUX3NPC)
 
