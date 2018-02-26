@@ -19,11 +19,11 @@ python instabrute.py USERNAME PASSWORD_FILE
 - [ ] Proxy things improvement
 
 ## Modules
-argparse
-requests
-PySocks
-asyncio
-proxybroker
+1. argparse
+2. requests
+3. PySocks
+4. asyncio
+5. proxybroker
 
 ## Screenshots
 ###### [*] Hack instagram accounts use bruteforce
