@@ -1,7 +1,7 @@
 
 
 # Instahack (Instabrute)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ARVABYAUX3NPC)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ARVABYAUX3NPC)
 ![stars](https://img.shields.io/github/stars/avramit/Instahack.svg?style=flat-square)
 ![forks](https://img.shields.io/github/forks/avramit/Instahack.svg?style=flat-square)
 
