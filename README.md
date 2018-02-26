@@ -8,10 +8,12 @@
 
 ## How to use
 Example: "python instabrute.py username passwords.txt"
+###### First install all the required modules
 ```
-//first install all the required modules
 pip install argparse requests PySocks asyncio proxybroker
-//run the script
+```
+###### Run the script
+```
 python instabrute.py USERNAME PASSWORD_FILE
 ```
 ## Todo List
