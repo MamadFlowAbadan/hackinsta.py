@@ -1,7 +1,9 @@
 
 
 # Instahack (Instabrute)
-Please help me and donate: [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ARVABYAUX3NPC)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)]
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ARVABYAUX3NPC)
 
 ### Please dont open a new issue before you search if issue already exists
 ### Please open issue with clear name
