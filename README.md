@@ -5,6 +5,8 @@
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg?style=flat-square)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ARVABYAUX3NPC)
 
+## The script is not compatible with Android yet! 
+
 ### Please dont open a new issue before you search if issue already exists
 ### Please open issue with clear name
 
