@@ -1,3 +1,5 @@
+# * Right now I declare this project as dead *
+
 ### 15/4/2018 Hi friends, Sorry i didn't looked at the issues but at this time I have lot of things in my school, I promised to update the code and fix the issues (2 months)
 
 # Instahack (Instabrute)
